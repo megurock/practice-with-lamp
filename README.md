@@ -5,15 +5,33 @@
 ```bash
 .
 ├── README.md
+├── client
+│   ├── dist
+│   │   ├── assets
+│   ├── index.html
+│   ├── node_modules
+│   ├── package.json
+│   ├── public
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── composables
+│   │   ├── main.ts
+│   │   ├── style.css
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
+│   └── yarn.lock
 ├── config
-│   ├── mysql
-│   │   ├── data
-│   │   └── my.cnf
-│   └── web
-│       └── Dockerfile
+│   ├── mysql
+│   │   └── my.cnf
+│   └── web
+│       └── Dockerfile
 ├── docker-compose.yml
 └── server
-    └── index.php
+    └── api
 ```
 
 ## Main Procedure

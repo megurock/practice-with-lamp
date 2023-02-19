@@ -28,3 +28,5 @@ html-ssr
 *.njsproj
 *.sln
 *.sw?
+
+dist
