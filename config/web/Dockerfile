@@ -2,7 +2,7 @@ FROM php:8.0.13-apache
 
 # extension
 RUN apt-get update \
-    && docker-php-ext-install pdo_mysql
+    && docker-php-ext-install mysqli
 
 # composer
 RUN curl -S https://getcomposer.org/installer | php \
