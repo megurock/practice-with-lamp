@@ -12,7 +12,7 @@
 │   └── web
 │       └── Dockerfile
 ├── docker-compose.yml
-└── html
+└── server
     └── index.php
 ```
 
