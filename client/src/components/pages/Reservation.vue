@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 import { useReservationCalender } from '@/composables/useReservationCalender'
 import { useValidateReservation } from '@/composables/useValidateReservation'
+import { useErrorMessage } from '@/composables/useErrorMessage'
 import { useFetch } from '@/composables/useFetch'
 
 export interface Props {
@@ -26,6 +26,10 @@ const emit = defineEmits<Emits>()
 const { isValidName, isNameError, isValidEmail, isEmailError, hasDate, canSubmit } = useValidateReservation(props)
 const { minDate, maxDate } = useReservationCalender()
 const { data, exec } = useFetch<Result>()
+const { errorMessage } = useErrorMessage(
+  () => data?.value?.status ?? '',
+  () => data?.value?.dates ?? [],
+)
 
 const onSubmit = () => {
   const { name, email, date } = props
@@ -37,7 +41,7 @@ const onSubmit = () => {
 
 <template>
   <form novalidate class="reservation-form" @submit.prevent="onSubmit">
-    <p>{{ data?.status }}</p>
+    <p v-if="errorMessage" class="error-message" v-text="errorMessage"></p>
     <p>{{ data?.dates }}</p>
     <div class="form-item">
       <input
@@ -91,5 +95,8 @@ const onSubmit = () => {
 }
 .invalid-input {
   border-color: red;
+}
+.error-message {
+  color: red;
 }
 </style>
