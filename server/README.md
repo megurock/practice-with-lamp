@@ -6,6 +6,19 @@
 
 ## Directory Structure
 
+```bash
+.
+├── README.md
+├── api
+├── config
+│   ├── mysql
+│   │   ├── data
+│   │   └── my.cnf
+│   └── web
+│       └── Dockerfile
+├── docker-compose.yml
+```
+
 ## Installation
 
 ```bash
