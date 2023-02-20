@@ -5,7 +5,7 @@
 - Node.js (v18.14.1)
 - Yarn (v3.4.1)
 
-##　 Directory Structure
+## Directory Structure
 
 ```bash
 .
