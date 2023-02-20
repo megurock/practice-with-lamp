@@ -21,11 +21,11 @@
     // [2] Get customer's Id.
     $query = 'SELECT customer_id FROM customers WHERE customer_name = "' . $customerName . '" AND customer_email = "' . $customerEmail . '"';
     $result = $mysqli->query($query);
-    if ($result) {
+    if (mysqli_num_rows($result) > 0) {
       $row = $result->fetch_assoc();
       $customerId = $row['customer_id'];
       $isCustomerRegistered = true;
-    }
+    } 
 
     // [3-A] If the user is registered, get booking dates matched by the customer name and the email.
     if ($isCustomerRegistered) {
@@ -60,7 +60,7 @@
       $res['dates'][] = $bookingDate;
       $res['status'] = 'success'; 
     } else {
-      $res['status'] = 'fully booked';
+      $res['status'] = 'fail';
     }
 
     // [5] Close database connection.
