@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { useReservationCalender } from '@/composables/useReservationCalender'
 import { useValidateReservation } from '@/composables/useValidateReservation'
 import { useFetch } from '@/composables/useFetch'
@@ -16,23 +17,28 @@ interface Emits {
 }
 
 interface Result {
-  message: string
+  status: 'success' | 'fail' | 'error'
+  dates: string[]
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 const { isValidName, isNameError, isValidEmail, isEmailError, hasDate, canSubmit } = useValidateReservation(props)
 const { minDate, maxDate } = useReservationCalender()
-const { data, error, isPending } = useFetch<Result>(`${import.meta.env.VITE_API_BASE_PATH}/hello.php`)
+const { data, exec } = useFetch<Result>()
 
 const onSubmit = () => {
-  console.log('ok')
+  const { name, email, date } = props
+  const params = `name=${name}&email=${email}&date=${date}`
+  const url = `${import.meta.env.VITE_API_BASE_PATH}/addBooking.php?${params}`
+  exec(url)
 }
 </script>
 
 <template>
   <form novalidate class="reservation-form" @submit.prevent="onSubmit">
-    <div>{{ data?.message }}</div>
+    <p>{{ data?.status }}</p>
+    <p>{{ data?.dates }}</p>
     <div class="form-item">
       <input
         type="text"
