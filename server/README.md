@@ -48,8 +48,8 @@ $ mysql -u root -p
 # Create customers table
 CREATE TABLE customers(
   customer_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  customer_name VARCHAR(50),
-  customer_email VARCHAR(256)
+  customer_name VARCHAR(50) NOT NULL,
+  customer_email VARCHAR(256) NOT NULL
 );
 
 INSERT INTO customers VALUES (NULL, 'Your Name', 'you@example.com');
