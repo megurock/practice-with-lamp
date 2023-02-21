@@ -15,7 +15,7 @@ function validateParams() {
     $emailLength = mb_strlen($emailParam);
     $isValidEmail = (0 < $emailLength) && ($emailLength <= 256);
 
-    // Validate date length.
+    // Validate date format.
     $dateParam = $_GET['date'];
     $date = date('Y-m-d', strtotime($dateParam));
     $isValidDate = $dateParam === $date;
